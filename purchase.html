@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/tailwind.css">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+  <title>Purchase</title>
+</head>
+
+<body>
+
+  <nav x-data="{mobileNav: false}" class="shadow-lg py-2 px-4 lg:px-16 bg-white">
+    <div class="container mx-auto px-4 ">
+      <div class="flex justify-between">
+        <div class="flex space-x-20 text-sm font-bold">
+          <!-- logo -->
+          <div>
+            <a href="#" class="flex items-center py-5 px-2 text-gray-700 hover:text-gray-900">
+              <img src="assets/images/Group.svg" alt="Logo">
+            </a>
+          </div>
+        </div>
+        <!-- nav -->
+        <div class="nav-links hidden md:flex items-center space-x-8 text-sm font-semibold">
+          <a href="#" class="text-midnight-blue hover:text-magenta-dark py-5">Home</a>
+          <a href="#" class="text-midnight-blue hover:text-magenta-dark py-5">Shop</a>
+          <a href="#" class="text-midnight-blue hover:text-magenta-dark py-5">Forum</a>
+          <a href="#" class="text-midnight-blue hover:text-magenta-dark py-5">Groups</a>
+          <div x-data="{NotificationDropDown: false}" class="relative">
+            <a class="relative bg-red-200" @click.prevent="NotificationDropDown = true" href="#">
+              <svg width="21" height="23" viewBox="0 0 21 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20.7258 17.8999L19.1588 15.8109C18.3611 14.7423 17.9288 13.4453 17.9258 12.1119V8.49988C17.9238 6.81803 17.3164 5.19312 16.2146 3.9224C15.1128 2.65169 13.5904 1.82014 11.9258 1.57988V1.49988C11.9258 1.23466 11.8204 0.980308 11.6329 0.792771C11.4454 0.605235 11.191 0.499878 10.9258 0.499878C10.6606 0.499878 10.4062 0.605235 10.2187 0.792771C10.0311 0.980308 9.92578 1.23466 9.92578 1.49988V1.57988C8.26118 1.82014 6.73873 2.65169 5.63696 3.9224C4.53519 5.19312 3.92775 6.81803 3.92578 8.49988V12.1119C3.92292 13.4455 3.49096 14.7428 2.69378 15.8119L1.12578 17.8999C1.01435 18.0484 0.9465 18.2251 0.929822 18.4101C0.913144 18.595 0.948302 18.781 1.03135 18.9471C1.11441 19.1132 1.24207 19.2529 1.40005 19.3505C1.55803 19.4482 1.74007 19.4999 1.92578 19.4999H7.06778C7.28605 20.3575 7.78384 21.1179 8.4825 21.661C9.18116 22.2041 10.0409 22.4989 10.9258 22.4989C11.8107 22.4989 12.6704 22.2041 13.3691 21.661C14.0677 21.1179 14.5655 20.3575 14.7838 19.4999H19.9258C20.1115 19.4999 20.2935 19.4482 20.4515 19.3505C20.6095 19.2529 20.7372 19.1132 20.8202 18.9471C20.9033 18.781 20.9384 18.595 20.9217 18.4101C20.9051 18.2251 20.8372 18.0484 20.7258 17.8999ZM10.9258 20.4999C10.5763 20.4988 10.2332 20.4059 9.93094 20.2304C9.62869 20.0548 9.37792 19.8029 9.20378 19.4999H12.6478C12.4736 19.8029 12.2229 20.0548 11.9206 20.2304C11.6184 20.4059 11.2753 20.4988 10.9258 20.4999ZM3.92578 17.4999L4.29378 17.0099C5.34943 15.5947 5.92163 13.8774 5.92578 12.1119V8.49988C5.92578 7.1738 6.45257 5.90203 7.39025 4.96434C8.32793 4.02666 9.5997 3.49988 10.9258 3.49988C12.2519 3.49988 13.5236 4.02666 14.4613 4.96434C15.399 5.90203 15.9258 7.1738 15.9258 8.49988V12.1119C15.9294 13.8783 16.502 15.5965 17.5588 17.0119L17.9258 17.4999H3.92578Z" fill="#333333" />
+              </svg>
+              <!-- Notification Dot/Circle  -->
+              <span class="absolute top-0 -right-5">
+                <svg width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="4.25645" cy="4.62376" r="3.77403" fill="#ED5252" />
+                </svg>
+              </span>
+            </a>
+            <div class="absolute top-10 right-0 mt-2 w-60 rounded-md shadow-purple-light bg-white" x-show="NotificationDropDown" @click.away="NotificationDropDown = false" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95">
+              <a href="#" class="flex items-center space-x-2 px-2 py-2 text-xs font-normal text-midnight-blue hover:bg-magenta-dark hover:bg-opacity-10">
+                <span class="flex-shrink-0 flex items-center justify-center w-7 h-7 bg-magenta-dark rounded-full text-white-lilac">
+                  <svg class="fill-current -mt-0.5 -ml-0.5" width="17" height="17" viewBox="0 0 21 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20.7258 17.8999L19.1588 15.8109C18.3611 14.7423 17.9288 13.4453 17.9258 12.1119V8.49988C17.9238 6.81803 17.3164 5.19312 16.2146 3.9224C15.1128 2.65169 13.5904 1.82014 11.9258 1.57988V1.49988C11.9258 1.23466 11.8204 0.980308 11.6329 0.792771C11.4454 0.605235 11.191 0.499878 10.9258 0.499878C10.6606 0.499878 10.4062 0.605235 10.2187 0.792771C10.0311 0.980308 9.92578 1.23466 9.92578 1.49988V1.57988C8.26118 1.82014 6.73873 2.65169 5.63696 3.9224C4.53519 5.19312 3.92775 6.81803 3.92578 8.49988V12.1119C3.92292 13.4455 3.49096 14.7428 2.69378 15.8119L1.12578 17.8999C1.01435 18.0484 0.9465 18.2251 0.929822 18.4101C0.913144 18.595 0.948302 18.781 1.03135 18.9471C1.11441 19.1132 1.24207 19.2529 1.40005 19.3505C1.55803 19.4482 1.74007 19.4999 1.92578 19.4999H7.06778C7.28605 20.3575 7.78384 21.1179 8.4825 21.661C9.18116 22.2041 10.0409 22.4989 10.9258 22.4989C11.8107 22.4989 12.6704 22.2041 13.3691 21.661C14.0677 21.1179 14.5655 20.3575 14.7838 19.4999H19.9258C20.1115 19.4999 20.2935 19.4482 20.4515 19.3505C20.6095 19.2529 20.7372 19.1132 20.8202 18.9471C20.9033 18.781 20.9384 18.595 20.9217 18.4101C20.9051 18.2251 20.8372 18.0484 20.7258 17.8999ZM10.9258 20.4999C10.5763 20.4988 10.2332 20.4059 9.93094 20.2304C9.62869 20.0548 9.37792 19.8029 9.20378 19.4999H12.6478C12.4736 19.8029 12.2229 20.0548 11.9206 20.2304C11.6184 20.4059 11.2753 20.4988 10.9258 20.4999ZM3.92578 17.4999L4.29378 17.0099C5.34943 15.5947 5.92163 13.8774 5.92578 12.1119V8.49988C5.92578 7.1738 6.45257 5.90203 7.39025 4.96434C8.32793 4.02666 9.5997 3.49988 10.9258 3.49988C12.2519 3.49988 13.5236 4.02666 14.4613 4.96434C15.399 5.90203 15.9258 7.1738 15.9258 8.49988V12.1119C15.9294 13.8783 16.502 15.5965 17.5588 17.0119L17.9258 17.4999H3.92578Z" />
+                  </svg>
+                </span>
+                <span>Lorem ipsum dolor sit amet consectetur adipisicing elit.</span>
+              </a>
+              <a href="#" class="flex items-center space-x-2 px-2 py-2 text-xs font-normal text-midnight-blue hover:bg-magenta-dark hover:bg-opacity-10">
+                <span class="flex-shrink-0 flex items-center justify-center w-7 h-7 bg-magenta-dark rounded-full text-white-lilac">
+                  <svg class="fill-current -mt-0.5 -ml-0.5" width="17" height="17" viewBox="0 0 21 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20.7258 17.8999L19.1588 15.8109C18.3611 14.7423 17.9288 13.4453 17.9258 12.1119V8.49988C17.9238 6.81803 17.3164 5.19312 16.2146 3.9224C15.1128 2.65169 13.5904 1.82014 11.9258 1.57988V1.49988C11.9258 1.23466 11.8204 0.980308 11.6329 0.792771C11.4454 0.605235 11.191 0.499878 10.9258 0.499878C10.6606 0.499878 10.4062 0.605235 10.2187 0.792771C10.0311 0.980308 9.92578 1.23466 9.92578 1.49988V1.57988C8.26118 1.82014 6.73873 2.65169 5.63696 3.9224C4.53519 5.19312 3.92775 6.81803 3.92578 8.49988V12.1119C3.92292 13.4455 3.49096 14.7428 2.69378 15.8119L1.12578 17.8999C1.01435 18.0484 0.9465 18.2251 0.929822 18.4101C0.913144 18.595 0.948302 18.781 1.03135 18.9471C1.11441 19.1132 1.24207 19.2529 1.40005 19.3505C1.55803 19.4482 1.74007 19.4999 1.92578 19.4999H7.06778C7.28605 20.3575 7.78384 21.1179 8.4825 21.661C9.18116 22.2041 10.0409 22.4989 10.9258 22.4989C11.8107 22.4989 12.6704 22.2041 13.3691 21.661C14.0677 21.1179 14.5655 20.3575 14.7838 19.4999H19.9258C20.1115 19.4999 20.2935 19.4482 20.4515 19.3505C20.6095 19.2529 20.7372 19.1132 20.8202 18.9471C20.9033 18.781 20.9384 18.595 20.9217 18.4101C20.9051 18.2251 20.8372 18.0484 20.7258 17.8999ZM10.9258 20.4999C10.5763 20.4988 10.2332 20.4059 9.93094 20.2304C9.62869 20.0548 9.37792 19.8029 9.20378 19.4999H12.6478C12.4736 19.8029 12.2229 20.0548 11.9206 20.2304C11.6184 20.4059 11.2753 20.4988 10.9258 20.4999ZM3.92578 17.4999L4.29378 17.0099C5.34943 15.5947 5.92163 13.8774 5.92578 12.1119V8.49988C5.92578 7.1738 6.45257 5.90203 7.39025 4.96434C8.32793 4.02666 9.5997 3.49988 10.9258 3.49988C12.2519 3.49988 13.5236 4.02666 14.4613 4.96434C15.399 5.90203 15.9258 7.1738 15.9258 8.49988V12.1119C15.9294 13.8783 16.502 15.5965 17.5588 17.0119L17.9258 17.4999H3.92578Z" />
+                  </svg>
+                </span>
+                <span>Lorem ipsum dolor sit amet consectetur adipisicing elit.</span>
+              </a>
+              <a href="#" class="flex items-center space-x-2 px-2 py-2 text-xs font-normal text-midnight-blue hover:bg-magenta-dark hover:bg-opacity-10">
+                <span class="flex-shrink-0 flex items-center justify-center w-7 h-7 bg-magenta-dark rounded-full text-white-lilac">
+                  <svg class="fill-current -mt-0.5 -ml-0.5" width="17" height="17" viewBox="0 0 21 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20.7258 17.8999L19.1588 15.8109C18.3611 14.7423 17.9288 13.4453 17.9258 12.1119V8.49988C17.9238 6.81803 17.3164 5.19312 16.2146 3.9224C15.1128 2.65169 13.5904 1.82014 11.9258 1.57988V1.49988C11.9258 1.23466 11.8204 0.980308 11.6329 0.792771C11.4454 0.605235 11.191 0.499878 10.9258 0.499878C10.6606 0.499878 10.4062 0.605235 10.2187 0.792771C10.0311 0.980308 9.92578 1.23466 9.92578 1.49988V1.57988C8.26118 1.82014 6.73873 2.65169 5.63696 3.9224C4.53519 5.19312 3.92775 6.81803 3.92578 8.49988V12.1119C3.92292 13.4455 3.49096 14.7428 2.69378 15.8119L1.12578 17.8999C1.01435 18.0484 0.9465 18.2251 0.929822 18.4101C0.913144 18.595 0.948302 18.781 1.03135 18.9471C1.11441 19.1132 1.24207 19.2529 1.40005 19.3505C1.55803 19.4482 1.74007 19.4999 1.92578 19.4999H7.06778C7.28605 20.3575 7.78384 21.1179 8.4825 21.661C9.18116 22.2041 10.0409 22.4989 10.9258 22.4989C11.8107 22.4989 12.6704 22.2041 13.3691 21.661C14.0677 21.1179 14.5655 20.3575 14.7838 19.4999H19.9258C20.1115 19.4999 20.2935 19.4482 20.4515 19.3505C20.6095 19.2529 20.7372 19.1132 20.8202 18.9471C20.9033 18.781 20.9384 18.595 20.9217 18.4101C20.9051 18.2251 20.8372 18.0484 20.7258 17.8999ZM10.9258 20.4999C10.5763 20.4988 10.2332 20.4059 9.93094 20.2304C9.62869 20.0548 9.37792 19.8029 9.20378 19.4999H12.6478C12.4736 19.8029 12.2229 20.0548 11.9206 20.2304C11.6184 20.4059 11.2753 20.4988 10.9258 20.4999ZM3.92578 17.4999L4.29378 17.0099C5.34943 15.5947 5.92163 13.8774 5.92578 12.1119V8.49988C5.92578 7.1738 6.45257 5.90203 7.39025 4.96434C8.32793 4.02666 9.5997 3.49988 10.9258 3.49988C12.2519 3.49988 13.5236 4.02666 14.4613 4.96434C15.399 5.90203 15.9258 7.1738 15.9258 8.49988V12.1119C15.9294 13.8783 16.502 15.5965 17.5588 17.0119L17.9258 17.4999H3.92578Z" />
+                  </svg>
+                </span>
+                <span>Lorem ipsum dolor sit amet consectetur adipisicing elit.</span>
+              </a>
+              <a href="#" class="flex items-center space-x-2 px-2 py-2 text-xs font-normal text-midnight-blue hover:bg-magenta-dark hover:bg-opacity-10">
+                <span class="flex-shrink-0 flex items-center justify-center w-7 h-7 bg-magenta-dark rounded-full text-white-lilac">
+                  <svg class="fill-current -mt-0.5 -ml-0.5" width="17" height="17" viewBox="0 0 21 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20.7258 17.8999L19.1588 15.8109C18.3611 14.7423 17.9288 13.4453 17.9258 12.1119V8.49988C17.9238 6.81803 17.3164 5.19312 16.2146 3.9224C15.1128 2.65169 13.5904 1.82014 11.9258 1.57988V1.49988C11.9258 1.23466 11.8204 0.980308 11.6329 0.792771C11.4454 0.605235 11.191 0.499878 10.9258 0.499878C10.6606 0.499878 10.4062 0.605235 10.2187 0.792771C10.0311 0.980308 9.92578 1.23466 9.92578 1.49988V1.57988C8.26118 1.82014 6.73873 2.65169 5.63696 3.9224C4.53519 5.19312 3.92775 6.81803 3.92578 8.49988V12.1119C3.92292 13.4455 3.49096 14.7428 2.69378 15.8119L1.12578 17.8999C1.01435 18.0484 0.9465 18.2251 0.929822 18.4101C0.913144 18.595 0.948302 18.781 1.03135 18.9471C1.11441 19.1132 1.24207 19.2529 1.40005 19.3505C1.55803 19.4482 1.74007 19.4999 1.92578 19.4999H7.06778C7.28605 20.3575 7.78384 21.1179 8.4825 21.661C9.18116 22.2041 10.0409 22.4989 10.9258 22.4989C11.8107 22.4989 12.6704 22.2041 13.3691 21.661C14.0677 21.1179 14.5655 20.3575 14.7838 19.4999H19.9258C20.1115 19.4999 20.2935 19.4482 20.4515 19.3505C20.6095 19.2529 20.7372 19.1132 20.8202 18.9471C20.9033 18.781 20.9384 18.595 20.9217 18.4101C20.9051 18.2251 20.8372 18.0484 20.7258 17.8999ZM10.9258 20.4999C10.5763 20.4988 10.2332 20.4059 9.93094 20.2304C9.62869 20.0548 9.37792 19.8029 9.20378 19.4999H12.6478C12.4736 19.8029 12.2229 20.0548 11.9206 20.2304C11.6184 20.4059 11.2753 20.4988 10.9258 20.4999ZM3.92578 17.4999L4.29378 17.0099C5.34943 15.5947 5.92163 13.8774 5.92578 12.1119V8.49988C5.92578 7.1738 6.45257 5.90203 7.39025 4.96434C8.32793 4.02666 9.5997 3.49988 10.9258 3.49988C12.2519 3.49988 13.5236 4.02666 14.4613 4.96434C15.399 5.90203 15.9258 7.1738 15.9258 8.49988V12.1119C15.9294 13.8783 16.502 15.5965 17.5588 17.0119L17.9258 17.4999H3.92578Z" />
+                  </svg>
+                </span>
+                <span>Lorem ipsum dolor sit amet consectetur adipisicing elit.</span>
+              </a>
+            </div>
+          </div>
+          <div x-data="{ProfileDropDown: false}" class="relative">
+            <a @click.prevent="ProfileDropDown = true" href="#"><img src="assets/images/person.png"></a>
+            <div class="absolute top-10 right-0 mt-2 w-48 rounded-md shadow-purple-light py-2 bg-white" x-show="ProfileDropDown" @click.away="ProfileDropDown = false" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95">
+              <a href="#" class="block px-4 py-2 text-sm text-midnight-blue hover:text-magenta-dark">Your Profile</a>
+              <a href="#" class="block px-4 py-2 text-sm text-midnight-blue hover:text-magenta-dark">Settings</a>
+              <a href="#" class="block px-4 py-2 text-sm text-midnight-blue hover:text-magenta-dark">Sign out</a>
+            </div>
+          </div>
+        </div>
+        <div class="flex md:hidden items-center space-x-3">
+          <div x-data="{NotificationDropDown: false}" class="relative">
+            <a class="relative bg-red-200" @click.prevent="NotificationDropDown = true" href="#">
+              <svg width="21" height="23" viewBox="0 0 21 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20.7258 17.8999L19.1588 15.8109C18.3611 14.7423 17.9288 13.4453 17.9258 12.1119V8.49988C17.9238 6.81803 17.3164 5.19312 16.2146 3.9224C15.1128 2.65169 13.5904 1.82014 11.9258 1.57988V1.49988C11.9258 1.23466 11.8204 0.980308 11.6329 0.792771C11.4454 0.605235 11.191 0.499878 10.9258 0.499878C10.6606 0.499878 10.4062 0.605235 10.2187 0.792771C10.0311 0.980308 9.92578 1.23466 9.92578 1.49988V1.57988C8.26118 1.82014 6.73873 2.65169 5.63696 3.9224C4.53519 5.19312 3.92775 6.81803 3.92578 8.49988V12.1119C3.92292 13.4455 3.49096 14.7428 2.69378 15.8119L1.12578 17.8999C1.01435 18.0484 0.9465 18.2251 0.929822 18.4101C0.913144 18.595 0.948302 18.781 1.03135 18.9471C1.11441 19.1132 1.24207 19.2529 1.40005 19.3505C1.55803 19.4482 1.74007 19.4999 1.92578 19.4999H7.06778C7.28605 20.3575 7.78384 21.1179 8.4825 21.661C9.18116 22.2041 10.0409 22.4989 10.9258 22.4989C11.8107 22.4989 12.6704 22.2041 13.3691 21.661C14.0677 21.1179 14.5655 20.3575 14.7838 19.4999H19.9258C20.1115 19.4999 20.2935 19.4482 20.4515 19.3505C20.6095 19.2529 20.7372 19.1132 20.8202 18.9471C20.9033 18.781 20.9384 18.595 20.9217 18.4101C20.9051 18.2251 20.8372 18.0484 20.7258 17.8999ZM10.9258 20.4999C10.5763 20.4988 10.2332 20.4059 9.93094 20.2304C9.62869 20.0548 9.37792 19.8029 9.20378 19.4999H12.6478C12.4736 19.8029 12.2229 20.0548 11.9206 20.2304C11.6184 20.4059 11.2753 20.4988 10.9258 20.4999ZM3.92578 17.4999L4.29378 17.0099C5.34943 15.5947 5.92163 13.8774 5.92578 12.1119V8.49988C5.92578 7.1738 6.45257 5.90203 7.39025 4.96434C8.32793 4.02666 9.5997 3.49988 10.9258 3.49988C12.2519 3.49988 13.5236 4.02666 14.4613 4.96434C15.399 5.90203 15.9258 7.1738 15.9258 8.49988V12.1119C15.9294 13.8783 16.502 15.5965 17.5588 17.0119L17.9258 17.4999H3.92578Z" fill="#333333" />
+              </svg>
+              <!-- Notification Dot/Circle  -->
+              <span class="absolute top-0 -right-5">
+                <svg width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="4.25645" cy="4.62376" r="3.77403" fill="#ED5252" />
+                </svg>
+              </span>
+            </a>
+            <div class="absolute top-10 right-0 mt-2 w-60 rounded-md shadow-purple-light bg-white" x-show="NotificationDropDown" @click.away="NotificationDropDown = false" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95">
+              <a href="#" class="flex items-center space-x-2 px-2 py-2 text-xs font-normal text-midnight-blue hover:bg-magenta-dark hover:bg-opacity-10">
+                <span class="flex-shrink-0 flex items-center justify-center w-7 h-7 bg-magenta-dark rounded-full text-white-lilac">
+                  <svg class="fill-current -mt-0.5 -ml-0.5" width="17" height="17" viewBox="0 0 21 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20.7258 17.8999L19.1588 15.8109C18.3611 14.7423 17.9288 13.4453 17.9258 12.1119V8.49988C17.9238 6.81803 17.3164 5.19312 16.2146 3.9224C15.1128 2.65169 13.5904 1.82014 11.9258 1.57988V1.49988C11.9258 1.23466 11.8204 0.980308 11.6329 0.792771C11.4454 0.605235 11.191 0.499878 10.9258 0.499878C10.6606 0.499878 10.4062 0.605235 10.2187 0.792771C10.0311 0.980308 9.92578 1.23466 9.92578 1.49988V1.57988C8.26118 1.82014 6.73873 2.65169 5.63696 3.9224C4.53519 5.19312 3.92775 6.81803 3.92578 8.49988V12.1119C3.92292 13.4455 3.49096 14.7428 2.69378 15.8119L1.12578 17.8999C1.01435 18.0484 0.9465 18.2251 0.929822 18.4101C0.913144 18.595 0.948302 18.781 1.03135 18.9471C1.11441 19.1132 1.24207 19.2529 1.40005 19.3505C1.55803 19.4482 1.74007 19.4999 1.92578 19.4999H7.06778C7.28605 20.3575 7.78384 21.1179 8.4825 21.661C9.18116 22.2041 10.0409 22.4989 10.9258 22.4989C11.8107 22.4989 12.6704 22.2041 13.3691 21.661C14.0677 21.1179 14.5655 20.3575 14.7838 19.4999H19.9258C20.1115 19.4999 20.2935 19.4482 20.4515 19.3505C20.6095 19.2529 20.7372 19.1132 20.8202 18.9471C20.9033 18.781 20.9384 18.595 20.9217 18.4101C20.9051 18.2251 20.8372 18.0484 20.7258 17.8999ZM10.9258 20.4999C10.5763 20.4988 10.2332 20.4059 9.93094 20.2304C9.62869 20.0548 9.37792 19.8029 9.20378 19.4999H12.6478C12.4736 19.8029 12.2229 20.0548 11.9206 20.2304C11.6184 20.4059 11.2753 20.4988 10.9258 20.4999ZM3.92578 17.4999L4.29378 17.0099C5.34943 15.5947 5.92163 13.8774 5.92578 12.1119V8.49988C5.92578 7.1738 6.45257 5.90203 7.39025 4.96434C8.32793 4.02666 9.5997 3.49988 10.9258 3.49988C12.2519 3.49988 13.5236 4.02666 14.4613 4.96434C15.399 5.90203 15.9258 7.1738 15.9258 8.49988V12.1119C15.9294 13.8783 16.502 15.5965 17.5588 17.0119L17.9258 17.4999H3.92578Z" />
+                  </svg>
+                </span>
+                <span>Lorem ipsum dolor sit amet consectetur adipisicing elit.</span>
+              </a>
+              <a href="#" class="flex items-center space-x-2 px-2 py-2 text-xs font-normal text-midnight-blue hover:bg-magenta-dark hover:bg-opacity-10">
+                <span class="flex-shrink-0 flex items-center justify-center w-7 h-7 bg-magenta-dark rounded-full text-white-lilac">
+                  <svg class="fill-current -mt-0.5 -ml-0.5" width="17" height="17" viewBox="0 0 21 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20.7258 17.8999L19.1588 15.8109C18.3611 14.7423 17.9288 13.4453 17.9258 12.1119V8.49988C17.9238 6.81803 17.3164 5.19312 16.2146 3.9224C15.1128 2.65169 13.5904 1.82014 11.9258 1.57988V1.49988C11.9258 1.23466 11.8204 0.980308 11.6329 0.792771C11.4454 0.605235 11.191 0.499878 10.9258 0.499878C10.6606 0.499878 10.4062 0.605235 10.2187 0.792771C10.0311 0.980308 9.92578 1.23466 9.92578 1.49988V1.57988C8.26118 1.82014 6.73873 2.65169 5.63696 3.9224C4.53519 5.19312 3.92775 6.81803 3.92578 8.49988V12.1119C3.92292 13.4455 3.49096 14.7428 2.69378 15.8119L1.12578 17.8999C1.01435 18.0484 0.9465 18.2251 0.929822 18.4101C0.913144 18.595 0.948302 18.781 1.03135 18.9471C1.11441 19.1132 1.24207 19.2529 1.40005 19.3505C1.55803 19.4482 1.74007 19.4999 1.92578 19.4999H7.06778C7.28605 20.3575 7.78384 21.1179 8.4825 21.661C9.18116 22.2041 10.0409 22.4989 10.9258 22.4989C11.8107 22.4989 12.6704 22.2041 13.3691 21.661C14.0677 21.1179 14.5655 20.3575 14.7838 19.4999H19.9258C20.1115 19.4999 20.2935 19.4482 20.4515 19.3505C20.6095 19.2529 20.7372 19.1132 20.8202 18.9471C20.9033 18.781 20.9384 18.595 20.9217 18.4101C20.9051 18.2251 20.8372 18.0484 20.7258 17.8999ZM10.9258 20.4999C10.5763 20.4988 10.2332 20.4059 9.93094 20.2304C9.62869 20.0548 9.37792 19.8029 9.20378 19.4999H12.6478C12.4736 19.8029 12.2229 20.0548 11.9206 20.2304C11.6184 20.4059 11.2753 20.4988 10.9258 20.4999ZM3.92578 17.4999L4.29378 17.0099C5.34943 15.5947 5.92163 13.8774 5.92578 12.1119V8.49988C5.92578 7.1738 6.45257 5.90203 7.39025 4.96434C8.32793 4.02666 9.5997 3.49988 10.9258 3.49988C12.2519 3.49988 13.5236 4.02666 14.4613 4.96434C15.399 5.90203 15.9258 7.1738 15.9258 8.49988V12.1119C15.9294 13.8783 16.502 15.5965 17.5588 17.0119L17.9258 17.4999H3.92578Z" />
+                  </svg>
+                </span>
+                <span>Lorem ipsum dolor sit amet consectetur adipisicing elit.</span>
+              </a>
+              <a href="#" class="flex items-center space-x-2 px-2 py-2 text-xs font-normal text-midnight-blue hover:bg-magenta-dark hover:bg-opacity-10">
+                <span class="flex-shrink-0 flex items-center justify-center w-7 h-7 bg-magenta-dark rounded-full text-white-lilac">
+                  <svg class="fill-current -mt-0.5 -ml-0.5" width="17" height="17" viewBox="0 0 21 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20.7258 17.8999L19.1588 15.8109C18.3611 14.7423 17.9288 13.4453 17.9258 12.1119V8.49988C17.9238 6.81803 17.3164 5.19312 16.2146 3.9224C15.1128 2.65169 13.5904 1.82014 11.9258 1.57988V1.49988C11.9258 1.23466 11.8204 0.980308 11.6329 0.792771C11.4454 0.605235 11.191 0.499878 10.9258 0.499878C10.6606 0.499878 10.4062 0.605235 10.2187 0.792771C10.0311 0.980308 9.92578 1.23466 9.92578 1.49988V1.57988C8.26118 1.82014 6.73873 2.65169 5.63696 3.9224C4.53519 5.19312 3.92775 6.81803 3.92578 8.49988V12.1119C3.92292 13.4455 3.49096 14.7428 2.69378 15.8119L1.12578 17.8999C1.01435 18.0484 0.9465 18.2251 0.929822 18.4101C0.913144 18.595 0.948302 18.781 1.03135 18.9471C1.11441 19.1132 1.24207 19.2529 1.40005 19.3505C1.55803 19.4482 1.74007 19.4999 1.92578 19.4999H7.06778C7.28605 20.3575 7.78384 21.1179 8.4825 21.661C9.18116 22.2041 10.0409 22.4989 10.9258 22.4989C11.8107 22.4989 12.6704 22.2041 13.3691 21.661C14.0677 21.1179 14.5655 20.3575 14.7838 19.4999H19.9258C20.1115 19.4999 20.2935 19.4482 20.4515 19.3505C20.6095 19.2529 20.7372 19.1132 20.8202 18.9471C20.9033 18.781 20.9384 18.595 20.9217 18.4101C20.9051 18.2251 20.8372 18.0484 20.7258 17.8999ZM10.9258 20.4999C10.5763 20.4988 10.2332 20.4059 9.93094 20.2304C9.62869 20.0548 9.37792 19.8029 9.20378 19.4999H12.6478C12.4736 19.8029 12.2229 20.0548 11.9206 20.2304C11.6184 20.4059 11.2753 20.4988 10.9258 20.4999ZM3.92578 17.4999L4.29378 17.0099C5.34943 15.5947 5.92163 13.8774 5.92578 12.1119V8.49988C5.92578 7.1738 6.45257 5.90203 7.39025 4.96434C8.32793 4.02666 9.5997 3.49988 10.9258 3.49988C12.2519 3.49988 13.5236 4.02666 14.4613 4.96434C15.399 5.90203 15.9258 7.1738 15.9258 8.49988V12.1119C15.9294 13.8783 16.502 15.5965 17.5588 17.0119L17.9258 17.4999H3.92578Z" />
+                  </svg>
+                </span>
+                <span>Lorem ipsum dolor sit amet consectetur adipisicing elit.</span>
+              </a>
+              <a href="#" class="flex items-center space-x-2 px-2 py-2 text-xs font-normal text-midnight-blue hover:bg-magenta-dark hover:bg-opacity-10">
+                <span class="flex-shrink-0 flex items-center justify-center w-7 h-7 bg-magenta-dark rounded-full text-white-lilac">
+                  <svg class="fill-current -mt-0.5 -ml-0.5" width="17" height="17" viewBox="0 0 21 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20.7258 17.8999L19.1588 15.8109C18.3611 14.7423 17.9288 13.4453 17.9258 12.1119V8.49988C17.9238 6.81803 17.3164 5.19312 16.2146 3.9224C15.1128 2.65169 13.5904 1.82014 11.9258 1.57988V1.49988C11.9258 1.23466 11.8204 0.980308 11.6329 0.792771C11.4454 0.605235 11.191 0.499878 10.9258 0.499878C10.6606 0.499878 10.4062 0.605235 10.2187 0.792771C10.0311 0.980308 9.92578 1.23466 9.92578 1.49988V1.57988C8.26118 1.82014 6.73873 2.65169 5.63696 3.9224C4.53519 5.19312 3.92775 6.81803 3.92578 8.49988V12.1119C3.92292 13.4455 3.49096 14.7428 2.69378 15.8119L1.12578 17.8999C1.01435 18.0484 0.9465 18.2251 0.929822 18.4101C0.913144 18.595 0.948302 18.781 1.03135 18.9471C1.11441 19.1132 1.24207 19.2529 1.40005 19.3505C1.55803 19.4482 1.74007 19.4999 1.92578 19.4999H7.06778C7.28605 20.3575 7.78384 21.1179 8.4825 21.661C9.18116 22.2041 10.0409 22.4989 10.9258 22.4989C11.8107 22.4989 12.6704 22.2041 13.3691 21.661C14.0677 21.1179 14.5655 20.3575 14.7838 19.4999H19.9258C20.1115 19.4999 20.2935 19.4482 20.4515 19.3505C20.6095 19.2529 20.7372 19.1132 20.8202 18.9471C20.9033 18.781 20.9384 18.595 20.9217 18.4101C20.9051 18.2251 20.8372 18.0484 20.7258 17.8999ZM10.9258 20.4999C10.5763 20.4988 10.2332 20.4059 9.93094 20.2304C9.62869 20.0548 9.37792 19.8029 9.20378 19.4999H12.6478C12.4736 19.8029 12.2229 20.0548 11.9206 20.2304C11.6184 20.4059 11.2753 20.4988 10.9258 20.4999ZM3.92578 17.4999L4.29378 17.0099C5.34943 15.5947 5.92163 13.8774 5.92578 12.1119V8.49988C5.92578 7.1738 6.45257 5.90203 7.39025 4.96434C8.32793 4.02666 9.5997 3.49988 10.9258 3.49988C12.2519 3.49988 13.5236 4.02666 14.4613 4.96434C15.399 5.90203 15.9258 7.1738 15.9258 8.49988V12.1119C15.9294 13.8783 16.502 15.5965 17.5588 17.0119L17.9258 17.4999H3.92578Z" />
+                  </svg>
+                </span>
+                <span>Lorem ipsum dolor sit amet consectetur adipisicing elit.</span>
+              </a>
+            </div>
+          </div>
+          <div x-data="{ProfileDropDown: false}" class="relative">
+            <a @click.prevent="ProfileDropDown = true" href="#"><img class="h-8" src="./assets/images/person.png"></a>
+            <div class="absolute top-10 right-0 mt-2 w-48 rounded-md shadow-purple-light py-2 bg-white" x-show="ProfileDropDown" @click.away="ProfileDropDown = false" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95">
+              <a href="#" class="block px-4 py-2 text-sm text-midnight-blue hover:text-magenta-dark">Your Profile</a>
+              <a href="#" class="block px-4 py-2 text-sm text-midnight-blue hover:text-magenta-dark">Settings</a>
+              <a href="#" class="block px-4 py-2 text-sm text-midnight-blue hover:text-magenta-dark">Sign out</a>
+            </div>
+          </div>
+          <button @click="mobileNav = !mobileNav">
+            <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Mobile Menu -->
+    <div class="absolute top-16 left-0 w-full bg-white z-30 md:hidden px-4 py-4 text-sm font-semibold" x-show="mobileNav" x-transition:enter="transition ease-out origin-top-right duration-200" x-transition:enter-start="opacity-0 transform" x-transition:enter-end="opacity-100 transform" x-transition:leave="transition ease-in origin-top-right duration-200" x-transition:leave-start="opacity-100 transform" x-transition:leave-end="opacity-0 transform">
+      <div class="h-11 bg-gray-100 flex items-center rounded-lg">
+        <img class="w-4 mx-3" src="assets/images/magnifying-glass.svg" alt="">
+        <input class="bg-gray-100 h-10 w-full px-2 rounded-r-lg text-sm focus:outline-none" type="search" name="search" placeholder="Search">
+      </div>
+      <a href="#" class="block py-2 text-midnight-blue hover:text-magenta-dark">Home</a>
+      <a href="#" class="block py-2 text-midnight-blue hover:text-magenta-dark">Shop</a>
+      <a href="#" class="block py-2 text-midnight-blue hover:text-magenta-dark">Forum</a>
+      <a href="#" class="block py-2 text-midnight-blue hover:text-magenta-dark">Groups</a>
+    </div>
+  </nav>
+
+  <div class="hero-section">
+    <div class="container mx-auto px-8 md:px-24 ">
+      <div class="  ">
+        <h1 class="font-circular-std-bold text-3xl md:text-5xl text-nile-blue text-center pt-20">Get Best Price<br>for Our Product</h1>
+        <p class="text-center font-dm-sans font-medium text-marble-blue mt-6 text-sm md:text-base">We give you the option to decide how much you need to use.</p>
+      </div>
+      <div class="py-48"></div>
+    </div>
+  </div>
+
+  <div class="container mx-auto px-4 lg:px-16 xl:px-24 font-dm-sans">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-12 justify-items-center mx-6 lg:mx-12 -mt-72">
+      <div class="bg-white rounded-lg w-full shadow-lg">
+        <div class="p-8 pb-6">
+          <div class="flex items-center">
+            <h1 class="text-4.5xl text-nile-blue font-circular-std-bold inline">$39 </h1>
+            <span class="font-dm-sans pl-1 pt-1 text-marble-blue">/month</span>
+          </div>
+          <h2 class="text-2xl font-circular-std-bold text-nile-blue mt-3">Standard</h2>
+          <p class="font-dm-sans text-marble-blue mt-3 border-b pb-5 text-sm">Better for growing businesses that want more customers.</p>
+          <div class="flex items-center mt-6">
+            <img class="w-6" src="assets/images/tick.svg" alt="">
+            <p class="text-sm md:text-base font-dm-sans text-nile-blue pl-2">Unlimited project use</p>
+          </div>
+          <div class="flex items-center mt-6">
+            <img class="w-6" src="assets/images/tick.svg" alt="">
+            <p class="text-sm md:text-base font-dm-sans text-nile-blue pl-2">Advanced dashboard</p>
+          </div>
+          <div class="flex items-center mt-6">
+            <img class="w-6" src="assets/images/tick.svg" alt="">
+            <p class="text-sm md:text-base font-dm-sans text-nile-blue pl-2">All components included</p>
+          </div>
+
+          <button class="flex items-center justify-between w-full py-2.5 px-5 mt-8 md:mt-28 border-2 border-grey-lighter 00 rounded-lg">
+            <p class="font-dm-sans font-bold text-marble-blue">Get Started</p>
+            <img src="assets/images/arrow-right.svg" alt="">
+          </button>
+        </div>
+      </div>
+      <div class="bg-white rounded-lg w-full mt-6 md:-mt-6 md:-mb-5 shadow-lg">
+        <div>
+          <p class="rounded-t-lg uppercase bg-magenta-dark text-white text-center py-2">recommended</p>
+        </div>
+        <div class="p-8 pt-4 ">
+          <div class="flex items-center">
+            <h1 class="text-4.5xl text-sea-green font-circular-std-bold inline">$99 </h1>
+            <span class="font-dm-sans pl-1 pt-1 text-marble-blue">/month</span>
+          </div>
+          <h2 class="text-2xl font-circular-std-bold text-nile-blue mt-3">Basic</h2>
+          <p class="font-dm-sans text-marble-blue mt-3 border-b pb-5 text-sm">All the basics for businesses that are just getting started.</p>
+          <div class="flex items-center mt-6">
+            <img class="w-6" src="assets/images/tick.svg" alt="">
+            <p class="text-sm md:text-base font-dm-sans text-nile-blue pl-2">Single project use</p>
+          </div>
+          <div class="flex items-center mt-6">
+            <img class="w-6" src="assets/images/tick.svg" alt="">
+            <p class="text-sm md:text-base font-dm-sans text-nile-blue pl-2">Basic dashboard</p>
+          </div>
+          <div class="flex items-center mt-6">
+            <img class="w-6" src="assets/images/tick.svg" alt="">
+            <p class="text-sm md:text-base font-dm-sans text-nile-blue pl-2">All components included</p>
+          </div>
+          <div class="flex items-center mt-6">
+            <img class="w-6" src="assets/images/tick.svg" alt="">
+            <p class="text-sm md:text-base font-dm-sans text-nile-blue pl-2">Advanced insight</p>
+          </div>
+          <button class="flex items-center justify-between w-full rounded-none mt-16 py-3 px-5 bg-magenta-dark">
+            <p class="font-dm-sans font-bold text-white">Get Started</p>
+            <img src="assets/images/arrow-right-white.svg" alt="">
+          </button>
+        </div>
+      </div>
+      <div class="bg-white rounded-lg w-full mt-6 md:mt-0 shadow-lg">
+        <div class="p-8 pb-6">
+          <div class="flex items-center">
+            <h1 class="text-4xl text-blue-eyes font-bold inline">$339 </h1>
+            <span class="font-dm-sans pl-1 pt-1 text-marble-blue">/month</span>
+          </div>
+          <h2 class="text-2xl font-circular-std-bold text-nile-blue mt-3">Premium</h2>
+          <p class="font-dm-sans text-marble-blue mt-3 border-b pb-5 text-sm ">Advanced features for pros who need more customization.</p>
+          <div class="flex items-center mt-6">
+            <img class="w-6" src="assets/images/tick.svg" alt="">
+            <p class="text-sm md:text-base font-dm-sans text-nile-blue pl-2">Unlimited project use</p>
+          </div>
+          <div class="flex items-center mt-6">
+            <img class="w-6" src="assets/images/tick.svg" alt="">
+            <p class="text-sm md:text-base font-dm-sans text-nile-blue pl-2">Advanced dashboard</p>
+          </div>
+          <div class="flex items-center mt-6">
+            <img class="w-6" src="assets/images/tick.svg" alt="">
+            <p class="text-sm md:text-base font-dm-sans text-nile-blue pl-2">Mutlivariate components</p>
+          </div>
+          <div class="flex items-center mt-6">
+            <img class="w-6" src="assets/images/tick.svg" alt="">
+            <p class="text-sm md:text-base font-dm-sans text-nile-blue pl-2">Phone Support</p>
+          </div>
+          <button class="flex items-center justify-between w-full py-2.5 px-5 mt-8 md:mt-20 border-2 border-grey-lighter 00 rounded-lg">
+            <p class="font-dm-sans font-bold text-marble-blue">Get Started</p>
+            <img src="assets/images/arrow-right.svg" alt="">
+          </button>
+        </div>
+      </div>
+    </div>
+    <p class="font-dm-sans text-center text-nile-blue mt-16 md:mt-28 pb-20 md:pb-32 md:text-lg border-b"> Premium plan is $124 per active app per month when paying on <br>a monthly basis. It's $90 per month when paying annually. </p>
+  </div>
+
+  <div class="cards-section">
+    <div class="container mx-auto px-6 mb-8 md:mb-32">
+      <h1 class="font-circular-std-bold text-5xl text-nile-blue text-center pt-8 md:pt-20 ">Buy in-game currency</h1>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center gap-x-6 gap-y-4 md:gap-y-14 mt-12 md:mt-20 md:mx-20 md:space-y-0 space-y-12">
+        <div class="bg-white border border-grey-06 shadow-purchase-card rounded-2xl">
+          <div class="flex justify-center">
+            <div class="absolute w-16 h-16 bg-white rounded-full border border-grey-06 md:p-3 -mt-8 text-white font-bold text-xl flex justify-center items-center">
+              <img class=" w-10 h-10" style=" border: 1px dashed #C7C7C7; " src="assets/images/Icon1.png" alt="">
+            </div>
+          </div>
+          <div class="px-6 md:px-12 pb-4">
+            <h4 class="font-poppins mt-10 text-2xl font-medium text-center text-nile-blue">100 Coins</h4>
+            <p class="font-dm-sans text-center text-marble-blue mt-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+          </div>
+        </div>
+        <div class="bg-white border border-grey-06 shadow-purchase-card rounded-2xl">
+          <div class="flex justify-center">
+            <div class="absolute w-16 h-16 p-auto rounded-full border border-grey-06 md:p-3 bg-white -mt-8 text-white font-bold text-xl flex justify-center items-center">
+              <img class=" w-10 h-10" style=" border: 1px dashed #C7C7C7; " src="assets/images/Icon2.png" alt="">
+            </div>
+          </div>
+          <div class="px-6 md:px-12 pb-4">
+            <h4 class="font-poppins mt-10 text-2xl font-medium text-center text-nile-blue">200 Coins</h4>
+            <p class="font-dm-sans text-center text-marble-blue mt-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+          </div>
+        </div>
+        <div class="bg-white border border-grey-06 shadow-purchase-card rounded-2xl">
+          <div class="flex justify-center ">
+            <div class="absolute w-16 h-16 rounded-full border border-grey-06 md:p-3 bg-white -mt-8 text-white font-bold text-xl flex justify-center items-center">
+              <img class=" w-10 h-10" style=" border: 1px dashed #C7C7C7; " src="assets/images/Icon3.png" alt="">
+            </div>
+          </div>
+          <div class="px-6 md:px-12 pb-4">
+            <h4 class="font-poppins mt-10 text-2xl font-medium text-center text-nile-blue">300 Coins</h4>
+            <p class="font-dm-sans text-center text-marble-blue mt-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+          </div>
+        </div>
+        <div class="bg-white border border-grey-06 shadow-purchase-card rounded-2xl">
+          <div class="flex justify-center">
+            <div class="absolute w-16 h-16 p-auto rounded-full border border-grey-06 md:p-3 bg-white -mt-8 text-white font-bold text-xl flex justify-center items-center">
+              <img class=" w-10 h-10" style=" border: 1px dashed #C7C7C7; " src="assets/images/Icon4.png" alt="">
+            </div>
+          </div>
+          <div class="px-6 md:px-12  pb-4">
+            <h4 class="font-poppins mt-10 text-2xl font-medium text-center text-nile-blue">400 Coins</h4>
+            <p class="font-dm-sans text-center text-marble-blue mt-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+          </div>
+        </div>
+        <div class="bg-white border border-grey-06 shadow-purchase-card rounded-2xl">
+          <div class="flex justify-center">
+            <div class="absolute w-16 h-16 p-auto rounded-full border border-grey-06 md:p-3 bg-white -mt-8 text-white font-bold text-xl flex justify-center items-center">
+              <img class=" w-10 h-10" style=" border: 1px dashed #C7C7C7; " src="assets/images/Icon5.png" alt="">
+            </div>
+          </div>
+          <div class="px-6 md:px-12 pb-4">
+            <h4 class="font-poppins mt-10 text-2xl font-medium text-center text-nile-blue">500 Coins</h4>
+            <p class="font-dm-sans text-center text-marble-blue mt-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+          </div>
+        </div>
+        <div class="bg-white border border-grey-06 shadow-purchase-card rounded-2xl">
+          <div class="flex justify-center">
+            <div class="absolute w-16 h-16 p-auto rounded-full border border-grey-06 md:p-3 bg-white -mt-8 text-white font-bold text-xl flex justify-center items-center">
+              <img class=" w-10 h-10" style=" border: 1px dashed #C7C7C7; " src="assets/images/Icon6.png" alt="">
+            </div>
+          </div>
+          <div class="px-6 md:px-12 pb-4">
+            <h4 class="font-poppins mt-10 text-2xl font-medium text-center text-nile-blue">600 Coins</h4>
+            <p class="font-dm-sans text-center text-marble-blue mt-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="faq-section bg-magenta-dark ">
+    <div class="container mx-auto px-6">
+      <div class="flex justify-center items-start py-10 md:py-16">
+        <div class="max-w-3xl my-1">
+          <h2 class="font-circular-std-bold text-white text-center mb-8 text-2xl md:text-5xl">Frequently Asked Questions</h2>
+          <ul class="flex flex-col text-white">
+            <li class="bg-grey-07 bg-opacity-10 my-2 rounded-lg" x-data="accordion(1)">
+              <h2 @click="handleClick()" class="flex flex-row justify-between items-center font-dm-sans font-bold md:text-xl p-5 cursor-pointer">
+                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit</span>
+                <svg :class="handleRotate()" class="fill-current text-white h-6 w-6 transform  duration-500" viewBox="0 0 20 20">
+                  <path d="M13.962,8.885l-3.736,3.739c-0.086,0.086-0.201,0.13-0.314,0.13S9.686,12.71,9.6,12.624l-3.562-3.56C5.863,8.892,5.863,8.611,6.036,8.438c0.175-0.173,0.454-0.173,0.626,0l3.25,3.247l3.426-3.424c0.173-0.172,0.451-0.172,0.624,0C14.137,8.434,14.137,8.712,13.962,8.885 M18.406,10c0,4.644-3.763,8.406-8.406,8.406S1.594,14.644,1.594,10S5.356,1.594,10,1.594S18.406,5.356,18.406,10 M17.521,10c0-4.148-3.373-7.521-7.521-7.521c-4.148,0-7.521,3.374-7.521,7.521c0,4.147,3.374,7.521,7.521,7.521C14.148,17.521,17.521,14.147,17.521,10"></path>
+                </svg>
+              </h2>
+              <div x-ref="tab" :style="handleToggle()" class="bg1 overflow-hidden max-h-0 duration-500 transition-all">
+                <p class="font-dm-sans md:text-lg p-5 pt-0 mr-6 md:mr-20 text-grey-lighter">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua </p>
+              </div>
+            </li>
+            <li class="bg-grey-07 bg-opacity-10 my-2 rounded-lg" x-data="accordion(2)">
+              <h2 @click="handleClick()" class="flex flex-row justify-between items-center font-dm-sans font-bold md:text-lg p-5 cursor-pointer">
+                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit</span>
+                <svg :class="handleRotate()" class="fill-current text-white h-6 w-6 transform transition-transform duration-500" viewBox="0 0 20 20">
+                  <path d="M13.962,8.885l-3.736,3.739c-0.086,0.086-0.201,0.13-0.314,0.13S9.686,12.71,9.6,12.624l-3.562-3.56C5.863,8.892,5.863,8.611,6.036,8.438c0.175-0.173,0.454-0.173,0.626,0l3.25,3.247l3.426-3.424c0.173-0.172,0.451-0.172,0.624,0C14.137,8.434,14.137,8.712,13.962,8.885 M18.406,10c0,4.644-3.763,8.406-8.406,8.406S1.594,14.644,1.594,10S5.356,1.594,10,1.594S18.406,5.356,18.406,10 M17.521,10c0-4.148-3.373-7.521-7.521-7.521c-4.148,0-7.521,3.374-7.521,7.521c0,4.147,3.374,7.521,7.521,7.521C14.148,17.521,17.521,14.147,17.521,10"></path>
+                </svg>
+              </h2>
+              <div class=" overflow-hidden max-h-0 duration-500 transition-all" x-ref="tab" :style="handleToggle()">
+                <p class="font-dm-sans md:text-lg p-5 pt-0 mr-6 md:mr-20 text-grey-lighter">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua </p>
+              </div>
+            </li>
+            <li class="bg-grey-07 bg-opacity-10 my-2 rounded-lg" x-data="accordion(3)">
+              <h2 @click="handleClick()" class="flex flex-row justify-between items-center font-dm-sans font-bold md:text-lg p-5 cursor-pointer">
+                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit</span>
+                <svg :class="handleRotate()" class="fill-current text-white h-6 w-6 transform transition-transform duration-500" viewBox="0 0 20 20">
+                  <path d="M13.962,8.885l-3.736,3.739c-0.086,0.086-0.201,0.13-0.314,0.13S9.686,12.71,9.6,12.624l-3.562-3.56C5.863,8.892,5.863,8.611,6.036,8.438c0.175-0.173,0.454-0.173,0.626,0l3.25,3.247l3.426-3.424c0.173-0.172,0.451-0.172,0.624,0C14.137,8.434,14.137,8.712,13.962,8.885 M18.406,10c0,4.644-3.763,8.406-8.406,8.406S1.594,14.644,1.594,10S5.356,1.594,10,1.594S18.406,5.356,18.406,10 M17.521,10c0-4.148-3.373-7.521-7.521-7.521c-4.148,0-7.521,3.374-7.521,7.521c0,4.147,3.374,7.521,7.521,7.521C14.148,17.521,17.521,14.147,17.521,10"></path>
+                </svg>
+              </h2>
+              <div class=" overflow-hidden max-h-0 duration-500 transition-all" x-ref="tab" :style="handleToggle()">
+                <p class="font-dm-sans md:text-lg p-5 pt-0 mr-6 md:mr-20 text-grey-lighter">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua </p>
+              </div>
+            </li>
+            <li class="bg-grey-07 bg-opacity-10 my-2 rounded-lg" x-data="accordion(4)">
+              <h2 @click="handleClick()" class="flex flex-row justify-between items-center font-dm-sans font-bold md:text-lg p-5 cursor-pointer">
+                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit</span>
+                <svg :class="handleRotate()" class="fill-current text-white h-6 w-6 transform transition-transform duration-500" viewBox="0 0 20 20">
+                  <path d="M13.962,8.885l-3.736,3.739c-0.086,0.086-0.201,0.13-0.314,0.13S9.686,12.71,9.6,12.624l-3.562-3.56C5.863,8.892,5.863,8.611,6.036,8.438c0.175-0.173,0.454-0.173,0.626,0l3.25,3.247l3.426-3.424c0.173-0.172,0.451-0.172,0.624,0C14.137,8.434,14.137,8.712,13.962,8.885 M18.406,10c0,4.644-3.763,8.406-8.406,8.406S1.594,14.644,1.594,10S5.356,1.594,10,1.594S18.406,5.356,18.406,10 M17.521,10c0-4.148-3.373-7.521-7.521-7.521c-4.148,0-7.521,3.374-7.521,7.521c0,4.147,3.374,7.521,7.521,7.521C14.148,17.521,17.521,14.147,17.521,10"></path>
+                </svg>
+              </h2>
+              <div class=" overflow-hidden max-h-0 duration-500 transition-all" x-ref="tab" :style="handleToggle()">
+                <p class="font-dm-sans md:text-lg p-5 pt-0 mr-6 md:mr-20 text-grey-lighter">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua </p>
+              </div>
+            </li>
+            <li class="bg-grey-07 bg-opacity-10 my-2 rounded-lg" x-data="accordion(5)">
+              <h2 @click="handleClick()" class="flex flex-row justify-between items-center font-dm-sans font-bold md:text-lg p-5 cursor-pointer">
+                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit</span>
+                <svg :class="handleRotate()" class="fill-current text-white h-6 w-6 transform transition-transform duration-500" viewBox="0 0 20 20">
+                  <path d="M13.962,8.885l-3.736,3.739c-0.086,0.086-0.201,0.13-0.314,0.13S9.686,12.71,9.6,12.624l-3.562-3.56C5.863,8.892,5.863,8.611,6.036,8.438c0.175-0.173,0.454-0.173,0.626,0l3.25,3.247l3.426-3.424c0.173-0.172,0.451-0.172,0.624,0C14.137,8.434,14.137,8.712,13.962,8.885 M18.406,10c0,4.644-3.763,8.406-8.406,8.406S1.594,14.644,1.594,10S5.356,1.594,10,1.594S18.406,5.356,18.406,10 M17.521,10c0-4.148-3.373-7.521-7.521-7.521c-4.148,0-7.521,3.374-7.521,7.521c0,4.147,3.374,7.521,7.521,7.521C14.148,17.521,17.521,14.147,17.521,10"></path>
+                </svg>
+              </h2>
+              <div class=" overflow-hidden max-h-0 duration-500 transition-all" x-ref="tab" :style="handleToggle()">
+                <p class="font-dm-sans md:text-lg p-5 pt-0 mr-6 md:mr-20 text-grey-lighter">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
+                </p>
+              </div>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="max-w-screen-lg mx-auto carousel-section mb-32 md:mb-36 my-20 md:my-36 bg2 relative" x-data="{ activeSlide: 1, slides: [1,2,3]}">
+    <div x-show="activeSlide === 1" class="grid grid-cols-1 lg:grid-cols-4 gap-12 mx-3 lg:mx-10">
+      <div>
+        <img class="w-28 md:w-40 lg:w-full" src="assets/images/quote.png" alt="">
+      </div>
+      <div class="col-span-1 lg:col-span-3 relative">
+        <div class="carousel rounded relative overflow-hidden ">
+          <div class="carousel-inner relative overflow-hidden w-full">
+            <div class="">
+              <p class="text-xl md:text-3xl primary-color font-circular-std-bold">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidi labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
+              <p class="text-sm md:text-base mt-6  primary-color font-circular-std-medium pr-16">— Ferdinand Stindl - Co Founder of CocoPay Company</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div x-show="activeSlide === 2" class="grid grid-cols-1 lg:grid-cols-4 gap-12 mx-3 lg:mx-10">
+      <div>
+        <img class="w-28 md:w-40 lg:w-full" src="assets/images/quote.png" alt="">
+      </div>
+      <div class="col-span-1 lg:col-span-3 relative">
+        <div class="carousel rounded relative overflow-hidden ">
+          <div class="carousel-inner relative overflow-hidden w-full">
+            <div class="">
+              <p class="text-xl md:text-3xl primary-color font-circular-std-bold">2. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidi labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
+              <p class="text-sm md:text-base mt-6  primary-color font-circular-std-medium pr-16">— Ferdinand Stindl - Co Founder of CocoPay Company</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div x-show="activeSlide === 3" class="grid grid-cols-1 lg:grid-cols-4 gap-12 mx-3 lg:mx-10">
+      <div>
+        <img class="w-28 md:w-40 lg:w-full" src="assets/images/quote.png" alt="">
+      </div>
+      <div class="col-span-1 lg:col-span-3 relative">
+        <div class="carousel rounded relative overflow-hidden ">
+          <div class="carousel-inner relative overflow-hidden w-full">
+            <div class="">
+              <p class="text-xl md:text-3xl primary-color font-circular-std-bold">3. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incidi labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud</p>
+              <p class="text-sm md:text-base mt-6  primary-color font-circular-std-medium pr-16">— Ferdinand Stindl - Co Founder of CocoPay Company</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Prev/Next Arrows -->
+    <div class="flex items-center space-x-5 absolute md:bottom-20 right-10">
+      <button x-bind:disabled="activeSlide == 1" :class="{'text-grey' : activeSlide == 1, 'text-nile-blue' : activeSlide != 1}" x-on:click="activeSlide = activeSlide === 1 ? slides.length : activeSlide - 1">
+        <svg class="fill-current" width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M9.17513 15.6785L9.9556 14.898C10.2931 14.564 10.2861 14.0191 9.94153 13.6921L5.70521 9.65621H15.8091C16.2767 9.65621 16.6529 9.28003 16.6529 8.81246V7.68746C16.6529 7.21989 16.2767 6.84371 15.8091 6.84371H5.70521L9.94153 2.80779C10.2825 2.48085 10.2896 1.93593 9.9556 1.60194L9.17513 0.82147C8.84818 0.490988 8.3138 0.490988 7.98336 0.82147L1.14898 7.65581C0.818503 7.98279 0.818503 8.51713 1.14898 8.84762L7.98336 15.6785C8.3103 16.0089 8.84468 16.0089 9.17513 15.6785Z" />
+        </svg>
+      </button>
+      <button x-bind:disabled="activeSlide == slides.length" :class="{'text-grey' : activeSlide == slides.length, 'text-nile-blue' : activeSlide != 3}" x-on:click="activeSlide = activeSlide === slides.length ? 1 : activeSlide + 1">
+        <svg class="fill-current" width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M9.57233 15.6785L16.4067 8.84411C16.7372 8.51713 16.7372 7.98279 16.4067 7.65231L9.57233 0.82147C9.24538 0.490988 8.711 0.490988 8.38056 0.82147L7.60008 1.60194C7.2626 1.93593 7.2696 2.48085 7.61416 2.80779L11.8505 6.84371H1.74658C1.27901 6.84371 0.902832 7.21989 0.902832 7.68746V8.81246C0.902832 9.28003 1.27901 9.65621 1.74658 9.65621H11.8505L7.61416 13.6921C7.27314 14.0191 7.2661 14.564 7.60008 14.898L8.38056 15.6785C8.7075 16.0089 9.24188 16.0089 9.57233 15.6785Z" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="newsletter-section pt-24">
+    <div class="container mx-auto flex justify-center mb-16 md:mb-40 px-6">
+      <div class="max-w-5xl rounded-2xl bg3 z-20 -mt-32">
+        <div class="p-5">
+          <h1 class="font-circular-std-bold text-2xl md:text-5xl text-white text-center pt-6 md:pt-10">Subscribe to our newsletter!</h1>
+          <div class="md:mx-40">
+            <p class="font-dm-sans text-white text-sm md:text-lg text-center mt-4 md:mt-8 ">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+              tempor incididunt ut labore et dolore magna aliqua
+            </p>
+          </div>
+          <div class="flex justify-center my-4 md:my-8">
+            <div class="bg-white flex rounded">
+              <img class="mx-2 md:mx-3" src="assets/images/envelope.svg" alt="">
+              <input class="w-full md:w-56 text-xs md:text-base" type="email" id="email" name="email" placeholder="Your Email">
+              <button class="btn-purple text-xs md:text-base py-1.5 px-2 md:px-6 my-1 mx-1">
+                Subscribe
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="bg-white-lilac">
+    <div class="container mx-auto px-8">
+      <div class="grid grid-cols-1 md:grid-cols-5 lg:grid-cols-6 gap-2 pt-8 md:pt-20 text-xs md:text-base">
+        <div class="col-span-1 md:col-span-2">
+          <img class="mx-auto mt-2 mb-8 md:mb-12" src="assets/images/Group.svg" alt="">
+        </div>
+        <div class="text-center md:text-left">
+          <h3 class="text-lg md:text-xl font-bold text-magenta-dark pb-2 ">ABOUT</h3>
+          <div class="lnk mb-3 md:mb-6 mx-auto md:mx-0"></div>
+          <a class="block py-1 font-medium" href="">Our Company</a>
+          <a class="block py-1 font-medium" href="">Careers</a>
+          <a class="block py-1 font-medium" href="">Supprt</a>
+          <a class="block py-1 font-medium" href="">How It Works </a>
+          <a class="block py-1 font-medium" href="">Add a Place</a>
+          <a class="block py-1 font-medium" href="">Disclaimer</a>
+        </div>
+        <div class="mt-4 md:mt-0 text-center md:text-left">
+          <h3 class="text-lg md:text-xl font-bold text-magenta-dark pb-2">LINKS </h3>
+          <div class="lnk mb-3 md:mb-6 mx-auto md:mx-0"></div>
+          <a class="block py-1 font-medium" href="">How It Works </a>
+          <a class="block py-1 font-medium" href="">Add a Place</a>
+          <a class="block py-1 font-medium" href="">Disclaimer</a>
+        </div>
+        <div class="mt-4 md:mt-0 text-center md:text-left">
+          <h3 class="text-lg md:text-xl font-bold text-magenta-dark pb-2  ">FOLLOW US</h3>
+          <div class="lnk mb-3 md:mb-6 mx-auto md:mx-0"></div>
+          <div class="flex font-medium my-3 justify-center md:justify-start">
+            <img class="mr-2 " src="assets/images/email.png" alt="">
+            contact@abc.com
+          </div>
+          <div class="flex font-medium my-3 justify-center md:justify-start">
+            <img class="mr-2 " src="assets/images/insta.png" alt="">
+            @abc
+          </div>
+          <div class="flex font-medium my-3 justify-center md:justify-start">
+            <img class="mr-3 " src="assets/images/linkedin.png" alt="">
+            abc
+          </div>
+        </div>
+      </div>
+      <div class="text-center font-medium text-magenta-dark py-6 md:py-10 ">
+        2021 Abc. All Rights Reserved
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const btn = document.querySelector("button.mobile-menu-button");
+    const menu = document.querySelector(".mobile-menu");
+
+    // add event listeners
+    btn.addEventListener("click", () => {
+      menu.classList.toggle("hidden");
+    });
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/@ryangjchandler/spruce@1.1.0/dist/spruce.umd.js"></script>
+  <script src="./js/alpine.js"></script>
+  <script>
+    Spruce.store('accordion', {
+      tab: 0,
+    });
+
+    const accordion = (idx) => ({
+      handleClick() {
+        this.$store.accordion.tab = this.$store.accordion.tab === idx ? 0 : idx;
+      },
+      handleRotate() {
+        return this.$store.accordion.tab === idx ? 'rotate-180' : '';
+      },
+      handleToggle() {
+        return this.$store.accordion.tab === idx ? `max-height: ${this.$refs.tab.scrollHeight}px` : '';
+      }
+    });
+  </script>
+
+</body>
+
+</html>

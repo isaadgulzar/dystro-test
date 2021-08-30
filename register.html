@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/tailwind.css">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <title>Register</title>
+</head>
+
+<body>
+
+
+  <div class="bg-magenta-dark flex items-center justify-center h-screen w-full">
+    <div class="relative h-screen w-full grid md:grid-cols-2 items-center">
+      <div class="hidden md:flex flex-col items-center justify-center space-y-7">
+        <img src="./assets/images/signin_user.png" alt="">
+        <div class="flex flex-col items-center space-y-1">
+          <h3 class="text-2.5xl font-circular-std-black text-white">Create your account</h3>
+          <p class="w-60 text-center px-1 text-white font-circular-std-book text-opacity-60">Its free to sign up and only take a minute</p>
+        </div>
+      </div>
+      <div class="flex flex-col items-center justify-center space-y-7 bg-white h-full w-full">
+        <div class="flex flex-col space-y-5 px-7 md:px-3 max-w-sm w-full">
+          <h3 class="text-2xl font-circular-std-medium text-matte-black-light text-center md:text-left">Please create your account</h3>
+          <form class="space-y-5" action="#" method="POST">
+            <div>
+              <input id="name" name="name" type="text" autocomplete="name" placeholder="Enter your name" class="appearance-none block w-full px-5 py-2.5 text-matte-black text-sm md:text-base font-circular-std-medium border border-geyser rounded shadow-sm placeholder-geyser focus:outline-none focus:border-magenta-dark">
+            </div>
+            <div>
+              <input id="email" name="email" type="email" autocomplete="email" placeholder="Email address" class="appearance-none block w-full px-5 py-2.5 text-matte-black text-sm md:text-base font-circular-std-medium border border-geyser rounded-lg shadow-sm placeholder-geyser focus:outline-none focus:border-magenta-dark">
+            </div>
+            <div>
+              <input id="password" name="password" type="password" autocomplete="password" placeholder="Type your password" class="appearance-none block w-full px-5 py-2.5 text-matte-black text-sm md:text-base font-circular-std-medium border border-geyser rounded-lg shadow-sm placeholder-geyser focus:outline-none focus:border-magenta-dark">
+            </div>
+            <div>
+              <button class="btn-purple py-2.5 w-full">
+                Sign up
+              </button>
+            </div>
+          </form>
+          <div class="relative">
+            <div class="absolute inset-0 flex items-center">
+              <div class="w-full border-t border-smoke border-opacity-50"></div>
+            </div>
+            <div class="relative flex justify-center">
+              <span class="font-mulish px-5 bg-white text-smoke">
+                OR
+              </span>
+            </div>
+          </div>
+          <div class="flex flex-col md:flex-row items-center space-y-5 md:space-y-0 md:space-x-5">
+            <button class="btn-white text-persian-red flex items-center justify-center space-x-3 py-3.5 px-12">
+              <svg class="fill-current" width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1.41581 6.1516C2.24782 4.49485 3.52418 3.10211 5.10224 2.12907C6.6803 1.15603 8.49787 0.641018 10.3518 0.641602C13.0468 0.641602 15.3108 1.6316 17.0418 3.2466L14.1748 6.1146C13.1378 5.1236 11.8198 4.6186 10.3518 4.6186C7.74681 4.6186 5.54181 6.3786 4.75681 8.7416C4.55681 9.3416 4.44281 9.9816 4.44281 10.6416C4.44281 11.3016 4.55681 11.9416 4.75681 12.5416C5.54281 14.9056 7.74681 16.6646 10.3518 16.6646C11.6968 16.6646 12.8418 16.3096 13.7378 15.7096C14.2572 15.3676 14.7019 14.9238 15.045 14.4051C15.3881 13.8864 15.6224 13.3035 15.7338 12.6916H10.3518V8.8236H19.7698C19.8878 9.4776 19.9518 10.1596 19.9518 10.8686C19.9518 13.9146 18.8618 16.4786 16.9698 18.2186C15.3158 19.7466 13.0518 20.6416 10.3518 20.6416C9.03844 20.6421 7.73784 20.3838 6.52435 19.8815C5.31086 19.3791 4.20826 18.6425 3.27957 17.7138C2.35088 16.7852 1.6143 15.6826 1.11194 14.4691C0.609581 13.2556 0.351282 11.955 0.351807 10.6416C0.351807 9.0276 0.737807 7.5016 1.41581 6.1516Z" />
+              </svg>
+              <span>Google</span>
+            </button>
+            <button class="btn-white text-royal-blue flex items-center justify-center space-x-3 py-3.5 px-12">
+              <svg class="fill-current" width="11" height="21" viewBox="0 0 11 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7.35181 12.1416H9.85181L10.8518 8.1416H7.35181V6.1416C7.35181 5.1116 7.35181 4.1416 9.35181 4.1416H10.8518V0.781602C10.5258 0.738602 9.29481 0.641602 7.99481 0.641602C5.27981 0.641602 3.35181 2.2986 3.35181 5.3416V8.1416H0.351807V12.1416H3.35181V20.6416H7.35181V12.1416Z" />
+              </svg>
+              <span>Facebook</span>
+            </button>
+          </div>
+          <div class="flex items-center justify-center space-x-2 pt-10">
+            <span class="text-smoke font-circular-std-book">Already have an account?</span>
+            <a href="./signin.html" class="text-magenta-dark hover:text-matte-black-dark font-circular-std-bold"> Login now</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</body>
+
+</html>
