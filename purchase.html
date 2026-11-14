@@ -29,9 +29,9 @@
         <!-- nav -->
         <div class="nav-links hidden md:flex items-center space-x-8 text-sm font-semibold">
           <a href="#" class="text-midnight-blue hover:text-magenta-dark py-5">Home</a>
-          <a href="#" class="text-midnight-blue hover:text-magenta-dark py-5">Shop</a>
-          <a href="#" class="text-midnight-blue hover:text-magenta-dark py-5">Forum</a>
-          <a href="#" class="text-midnight-blue hover:text-magenta-dark py-5">Groups</a>
+          
+          
+          
           <div x-data="{NotificationDropDown: false}" class="relative">
             <a class="relative bg-red-200" @click.prevent="NotificationDropDown = true" href="#">
               <svg width="21" height="23" viewBox="0 0 21 23" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -82,9 +82,9 @@
           <div x-data="{ProfileDropDown: false}" class="relative">
             <a @click.prevent="ProfileDropDown = true" href="#"><img src="assets/images/person.png"></a>
             <div class="absolute top-10 right-0 mt-2 w-48 rounded-md shadow-purple-light py-2 bg-white" x-show="ProfileDropDown" @click.away="ProfileDropDown = false" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95">
-              <a href="#" class="block px-4 py-2 text-sm text-midnight-blue hover:text-magenta-dark">Your Profile</a>
-              <a href="#" class="block px-4 py-2 text-sm text-midnight-blue hover:text-magenta-dark">Settings</a>
-              <a href="#" class="block px-4 py-2 text-sm text-midnight-blue hover:text-magenta-dark">Sign out</a>
+              <a href="./profile.html" class="block px-4 py-2 text-sm text-midnight-blue hover:text-magenta-dark">Your Profile</a>
+              <a href="./setting-page.html" class="block px-4 py-2 text-sm text-midnight-blue hover:text-magenta-dark">Settings</a>
+              <a href="./signin.html" class="block px-4 py-2 text-sm text-midnight-blue hover:text-magenta-dark">Sign out</a>
             </div>
           </div>
         </div>
@@ -139,9 +139,9 @@
           <div x-data="{ProfileDropDown: false}" class="relative">
             <a @click.prevent="ProfileDropDown = true" href="#"><img class="h-8" src="./assets/images/person.png"></a>
             <div class="absolute top-10 right-0 mt-2 w-48 rounded-md shadow-purple-light py-2 bg-white" x-show="ProfileDropDown" @click.away="ProfileDropDown = false" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95">
-              <a href="#" class="block px-4 py-2 text-sm text-midnight-blue hover:text-magenta-dark">Your Profile</a>
-              <a href="#" class="block px-4 py-2 text-sm text-midnight-blue hover:text-magenta-dark">Settings</a>
-              <a href="#" class="block px-4 py-2 text-sm text-midnight-blue hover:text-magenta-dark">Sign out</a>
+              <a href="./profile.html" class="block px-4 py-2 text-sm text-midnight-blue hover:text-magenta-dark">Your Profile</a>
+              <a href="./setting-page.html" class="block px-4 py-2 text-sm text-midnight-blue hover:text-magenta-dark">Settings</a>
+              <a href="./signin.html" class="block px-4 py-2 text-sm text-midnight-blue hover:text-magenta-dark">Sign out</a>
             </div>
           </div>
           <button @click="mobileNav = !mobileNav">
@@ -159,9 +159,9 @@
         <input class="bg-gray-100 h-10 w-full px-2 rounded-r-lg text-sm focus:outline-none" type="search" name="search" placeholder="Search">
       </div>
       <a href="#" class="block py-2 text-midnight-blue hover:text-magenta-dark">Home</a>
-      <a href="#" class="block py-2 text-midnight-blue hover:text-magenta-dark">Shop</a>
-      <a href="#" class="block py-2 text-midnight-blue hover:text-magenta-dark">Forum</a>
-      <a href="#" class="block py-2 text-midnight-blue hover:text-magenta-dark">Groups</a>
+      
+      
+      
     </div>
   </nav>
 
